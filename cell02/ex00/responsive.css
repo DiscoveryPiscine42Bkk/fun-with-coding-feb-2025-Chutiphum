@@ -1,0 +1,27 @@
+html,
+body {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+table {
+    width: 100vw;
+    height: 100vh;
+    border-collapse: collapse;
+}
+
+td {
+    border: 1px solid black;
+    text-align: center;
+    font-size: min(4vw, 4vh);
+}
+
+td:first-child {
+    background-color: #c4c481;
+}
+
+td:last-child {
+    background-color: #f7c6b7;
+}
