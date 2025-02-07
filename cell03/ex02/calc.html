@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calculator</title>
+    <style>
+        .calculator {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        input,
+        select {
+            padding: 5px;
+            margin: 5px;
+        }
+
+        button {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <div class="form-group">
+            <input type="text" id="leftOperand" placeholder="Left operand">
+            <select id="operator">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+                <option value="%">%</option>
+            </select>
+            <input type="text" id="rightOperand" placeholder="Right operand">
+        </div>
+        <button onclick="calculate()">Try me!</button>
+    </div>
+
+    <script>
+        //regax ตรวจเลข
+        function isPositiveInteger(value) {
+            return /^\d+$/.test(value) && parseInt(value) >= 0;
+        }
+
+        function calculate() {
+            const leftOperand = document.getElementById('leftOperand').value;
+            const rightOperand = document.getElementById('rightOperand').value;
+            const operator = document.getElementById('operator').value;
+
+            // ตรวจเลข
+            if (!isPositiveInteger(leftOperand) || !isPositiveInteger(rightOperand)) {
+                alert('Error :(');
+                console.log('Error: Invalid input');
+                return;
+            }
+
+            const left = parseInt(leftOperand);
+            const right = parseInt(rightOperand);
+
+            // 9000
+            if ((operator === '/' || operator === '%') && right === 0) {
+                alert("It's over 9000!");
+                console.log("It's over 9000!");
+                return;
+            }
+
+            let result;
+            switch (operator) {
+                case '+':
+                    result = left + right;
+                    break;
+                case '-':
+                    result = left - right;
+                    break;
+                case '*':
+                    result = left * right;
+                    break;
+                case '/':
+                    result = Math.floor(left / right);  // Integer division
+                    break;
+                case '%':
+                    result = left % right;
+                    break;
+            }
+
+            // แสดงผล
+            alert(`Result: ${result}`);
+            console.log(`Result: ${result}`);
+        }
+
+        //ทุก 30 วิ
+        setInterval(() => {
+            alert('Please, use me...');
+        }, 30000);
+    </script>
+</body>
+
+</html>
